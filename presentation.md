@@ -34,7 +34,7 @@ iPhone 8 で撮影できる映像は VFR の mov ファイルです。
 [ffmpeg_CPU_crf16_r60_ab1411k.bat](https://github.com/SaguchiWataru/ffmpeg_vfr_to_cfr/blob/master/source/ffmpeg_CPU_crf16_r60_ab1411k.bat)  
 
 ffmpeg.exeは別途公式サイトからダウンロードしてください。  
-[ffmpeg](https://ffmpeg.org/download.html)  
+[FFmpeg公式サイト](https://ffmpeg.org/download.html)  
 
 ## ソースコード
 
