@@ -49,7 +49,7 @@ K019C1053は、日本工学院専門学校の佐口航の学籍番号です。
 
 ## ソースコード
 
-```ffmpeg CPU crf16 r60 ab1411k.bat
+```bat:ffmpeg_CPU_crf16_r60_ab1411k.bat
 ECHO OFF
  
 :REPEAT
