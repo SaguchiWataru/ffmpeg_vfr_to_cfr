@@ -1,20 +1,18 @@
-# ffmpegを使った自動で動画を変換してくれるbatファイル
+# ffmpegで動画の可変フレームレート(VFR)を固定フレームレート(CFR)に変換するbatファイル
 
 ## 作った理由
 
-この機能を作ろうと思ったきっかけは、動画ファイルを可変フレームレート (VFR) から固定フレームレート (CFR) に変換したかったからです。  
-iPhone 8 で撮影できる映像は VFR の mov ファイルです。  
-そのため、Adobe Premiere Elements 14 のような動画編集ソフトでは音ズレが起きてしまいます。  
-この問題を解消するためには、 VFR から CFR に変換する必要があります。  
-しかし、頻繁に動画を変換する身としては、動画変換ソフトの設定を毎回変更するのは効率が悪いです。  
-また、公開する作品は相当な画質を維持する必要がある場合があります。  
+iPhone 8 で撮影できる映像は可変フレームレート(VFR)のmovファイルです。  
+そのため、Adobe Premiere Pro やBlackmagic Design DaVinci Resolve などの動画編集ソフトで編集すると音ズレが発生してしまいます。  
+この問題を解消するためには、VFRからCFRに変換する必要があります。  
+動画変換ソフトで変換する事も可能ですが、頻繁に動画を変換する身としては、動画変換ソフトの設定を毎回確認する事が手間なためbatファイルを作成しました。  
 
 ## 特徴
 
 * 動画ファイルを bat ファイルにドラッグ＆ドドロップするだけで自動で変換してくれます
 * 複数の動画をまとめてドラッグ＆ドロップできます
 * 画質や音質の設定も出力先の設定もする必要がありません
-* 一般的に使われている動画変換ソフトよりも画質と音質を維持できます
+* 一般的に使われている動画変換ソフトのパラメータよりも画質と音質を優先しました
 
 ## 仕様
 
@@ -32,6 +30,9 @@ iPhone 8 で撮影できる映像は VFR の mov ファイルです。
 
 細心の注意を払って作成しましたが、不具合や損害を保証するものではありません。  
 [ffmpeg_CPU_crf16_r60_ab1411k.bat](https://github.com/SaguchiWataru/ffmpeg_vfr_to_cfr/blob/master/source/ffmpeg_CPU_crf16_r60_ab1411k.bat)  
+
+映像のみ変換し、オーディオはソースをコピーするbatファイルも作成しました。より音質の劣化を防ぐことができます。  
+[ffmpeg%20H_264_CPUEnc_crf16_r60_audio_copy.bat](https://github.com/SaguchiWataru/ffmpeg_vfr_to_cfr/blob/master/source/ffmpeg%20H_264_CPUEnc_crf16_r60_audio_copy.bat)  
 
 ffmpeg.exeは別途公式サイトからダウンロードしてください。  
 [FFmpeg公式サイト](https://ffmpeg.org/download.html)  
@@ -54,6 +55,21 @@ ECHO OFF
  
 :REPEAT
 ffmpeg.exe -i %1 -crf 16 -r 60 -ab 1411k "%~n1_H_264_CPUEnc_crf16_r60_ab1411k.mp4"
+
+if "%~2"=="" GOTO EXIT
+shift
+GOTO REPEAT
+:EXIT
+pause
+```
+
+## ソースコード(映像のみ変換し、オーディオはソースをコピー)
+
+```bat:ffmpeg H_264_CPUEnc_crf16_r60_audio_copy.bat
+ECHO OFF
+ 
+:REPEAT
+ffmpeg.exe -i %1 -crf 16 -r 60 -c:a copy "%~n1_H_264_CPUEnc_crf16_r60_audio_copy.mp4"
 
 if "%~2"=="" GOTO EXIT
 shift
