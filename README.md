@@ -27,17 +27,17 @@ iPhone 8 で撮影できる映像は可変フレームレート(VFR)のmovファ
 ちょっとやり過ぎなくらい画質と音質を優先しました。  
 
 ## ダウンロード
-
-上記の仕様と同じファイルは以下です。
+  
+上記の仕様と同じファイルは以下です。  
 [ffmpeg_H_264_CPUEnc_crf16_r60_ab1536k.bat](https://github.com/SaguchiWataru/ffmpeg_vfr_to_cfr/blob/master/source/ffmpeg_H_264_CPUEnc_crf16_r60_ab1536k.bat)  
-
+  
 映像のみ変換し、オーディオはソースをコピーするbatファイルも作成しました。より音質の劣化を防ぐことができます。  
 [ffmpeg_H_264_CPUEnc_crf16_r60_audio_copy.bat](https://github.com/SaguchiWataru/ffmpeg_vfr_to_cfr/blob/master/source/ffmpeg_H_264_CPUEnc_crf16_r60_audio_copy.bat)  
-
+  
 ffmpeg.exeは別途公式サイトからダウンロードしてください。  
 [FFmpeg公式サイト](https://ffmpeg.org/download.html)  
-
-※細心の注意を払って作成しましたが、いかなる損害を保証いたしかねます。
+  
+※細心の注意を払って作成しましたが、いかなる損害を保証いたしかねます。  
 
 ## ソースコード
 
